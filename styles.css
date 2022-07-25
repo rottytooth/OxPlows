@@ -4,15 +4,25 @@
 }
 html, body {
     width: 100%;
+    min-height: 100%;
     border: 0;
     margin: 0;
     text-align: center;
 }
 body {
-    background-color: #c6d5c8;
-    /* background-color: #a2a19a; */
-    /* background-color: #9186d0; */
+    background-color: #ce85f3;
     font-family: hack;
+}
+#inside {
+    background-color: #d1e0d3;
+    height: 100%;
+    width: 510px;
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border-color: #283237;
 }
 .header {
     margin: 0;
@@ -23,6 +33,7 @@ h2 {
     display: inline-block;
     margin: auto;
     width: 200px;
+    margin-top: 20px;
 }
 input, select {
     font-size: 16px;
@@ -98,4 +109,16 @@ p {
     padding: 0;
     position: absolute;
     width: 1px;
+}
+#description {
+    text-align: left; 
+    margin-top: 20px;
+    width: 470px;
+    float: left;
+    padding: 10px;
+    padding-right: 20px;
+}
+#credits {
+    float: left;
+    padding: 10px;
 }
