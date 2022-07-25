@@ -1,0 +1,101 @@
+@font-face {
+    font-family: hack;
+    src: url(fonts/Hack-Regular.ttf);
+}
+html, body {
+    width: 100%;
+    border: 0;
+    margin: 0;
+    text-align: center;
+}
+body {
+    background-color: #c6d5c8;
+    /* background-color: #a2a19a; */
+    /* background-color: #9186d0; */
+    font-family: hack;
+}
+.header {
+    margin: 0;
+
+}
+h2 {
+    text-align: left;
+    display: inline-block;
+    margin: auto;
+    width: 200px;
+}
+input, select {
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #283237;
+    border-color: #283237;
+    color: #ccc;
+}
+#size {
+    margin-bottom: 30px;
+    padding: 0 10px;
+    background-color: #283237;
+    border-color: #283237;
+    color: #ccc;
+}
+#container {
+    width: 470px;
+    margin: auto;
+    justify-content: right;
+    text-align: right;
+}
+.ox {
+    text-align: left;
+    width: 440px;
+    margin: auto;
+    overflow-x: hidden;
+    background-color: #283237;
+    border: 2px solid #283237;
+    border-radius: 8px;
+    color: #00ff00;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-width: 100px;
+    min-height: 29px;
+    font-family: hack;
+    font-size: 18px;
+}
+p {
+    margin-bottom: 0;
+    margin-top: 5px;
+    width: 100%;
+}
+.ox .blank {
+    content: " ";
+    margin-top: 23px; 
+}
+.rev {
+    display:inline-block; 
+    transform:scaleX(-1);
+}
+.box-shadow{
+    box-shadow: 8px 8px 16px 2px #777193;
+}
+#clone {
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 36px;
+    /* position: absolute;
+    left: -10000px; */
+}
+#download {
+    margin-top: 30px;
+    margin-right: 0;
+}
+#hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
