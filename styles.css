@@ -10,11 +10,11 @@ html, body {
     text-align: center;
 }
 body {
-    background-color: #ce85f3;
+    background-color: #283237;
     font-family: hack;
 }
 #inside {
-    background-color: #d1e0d3;
+    background-color: #fff;
     height: 100%;
     width: 510px;
     padding: 20px;
@@ -87,7 +87,7 @@ p {
     transform:scaleX(-1);
 }
 .box-shadow{
-    box-shadow: 8px 8px 16px 2px #777193;
+    box-shadow: 0px 8px 16px 2px #999;
 }
 #clone {
     margin-left: 0px;
@@ -120,5 +120,8 @@ p {
 }
 #credits {
     float: left;
+    margin-top: 20px;
+    text-align: left;
+    width: 470px;
     padding: 10px;
 }
