@@ -5,8 +5,8 @@ colorsets = [
     {
         desktop: "#ffffff",
         window: "#283237",
-        text: "#00ff00",
-        boxes: "#00ff00"
+        text: "#ffffff",
+        boxes: "#ffffff"
     }
 ]
 
