@@ -117,7 +117,7 @@ function clickColorFront(clr, id) {
 
 // events
 window.addEventListener("keydown", function(e) {
-    if (!event.ctrlKey && !event.metaKey) {
+    if (!e.ctrlKey && !e.metaKey) {
         document.getElementById("typedinput").focus();
     }
 }, false);
@@ -156,5 +156,6 @@ window.addEventListener('load', (event) => {
     createColorControl(false, "window_outline", "window");
     createColorControl(true, "main", "text");
     createColorControl(true, "window_outline", "boxes");
-//    document.getElementById("colorpick0").value = document.getElementById("desktop").style.backgroundColor;
+
+    document.getElementById("typedinput").focus();
 });
