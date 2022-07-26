@@ -12,66 +12,95 @@ html, body {
 body {
     background-color: #283237;
     font-family: hack;
+    color: #eee;
 }
-#inside {
-    background-color: #fff;
+a, a:visited {
+    color: #ccc;
+    text-decoration: underline;
+}
+#topControls {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#window_outline {
+    text-align: right;
+}
+#desktop {
     height: 100%;
     width: 510px;
     padding: 20px;
-    margin-top: 40px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 5px;
     border-color: #283237;
 }
 .header {
     margin: 0;
-
 }
 h2 {
     text-align: left;
     display: inline-block;
-    margin: auto;
-    width: 200px;
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 input, select {
     font-size: 16px;
-    border-radius: 5px;
+    border: solid 1px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
     background-color: #283237;
-    border-color: #283237;
+    border-color: #fff;
     color: #ccc;
+    height: 40px;
+    vertical-align: bottom;
 }
-#size {
-    margin-bottom: 30px;
-    padding: 0 10px;
-    background-color: #283237;
-    border-color: #283237;
-    color: #ccc;
+select {
+    display:inline-block;
+}
+input[type="color"] {
+    width: 40px;
+    padding: 0px;
+    border-radius: 1px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+input[type="button"] {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 #container {
     width: 470px;
     margin: auto;
-    justify-content: right;
     text-align: right;
+}
+.ox_header {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    margin: 0;
+    
+    width: 440px;
+    margin: auto;
+
+    border-radius: 8px;
+    border: 2px solid #283237;
+    border-radius: 8px;
 }
 .ox {
     text-align: left;
     width: 440px;
     margin: auto;
+    /* background-color: #283237; */
     overflow-x: hidden;
-    background-color: #283237;
-    border: 2px solid #283237;
-    border-radius: 8px;
-    color: #00ff00;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
     min-width: 100px;
-    min-height: 29px;
+    min-height: 39px;
     font-family: hack;
-    font-size: 18px;
+    font-size: 16px;
 }
 p {
     margin-bottom: 0;
@@ -87,7 +116,7 @@ p {
     transform:scaleX(-1);
 }
 .box-shadow{
-    box-shadow: 0px 8px 16px 2px #999;
+    box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);
 }
 #clone {
     margin-left: 0px;

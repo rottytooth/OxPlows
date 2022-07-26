@@ -1,13 +1,23 @@
 const ENTER_KEY = 13;
 const BACKSPACE_KEY = 8;
 
+colorsets = [
+    {
+        desktop: "#ffffff",
+        window: "#283237",
+        text: "#00ff00",
+        boxes: "#00ff00"
+    }
+]
+
 function isEmptyOrSpaces(str){
     return str === null || str.match(/^ *$/) !== null;
 }
 function reset() {
-    let newsize = document.getElementById('size').value * 11;
-    document.getElementById('container').style.width = (newsize + 30) + "px";
-    document.getElementById('inside').style.width = (newsize + 80) + "px";
+    let newsize = document.getElementById('size').value * 10;
+    document.getElementById('container').style.width = (newsize + 120) + "px";
+    document.getElementById('desktop').style.width = (newsize + 80) + "px";
+    document.getElementById('window_outline').style.width = newsize + "px";
     document.getElementById('main').style.width = newsize + "px";
     document.getElementById("typedinput").value = "";
     document.getElementById("main").innerHTML = "<p></p>";
@@ -75,7 +85,7 @@ function addCharacter(e) {
 }            
 
 function save2img(scale) {
-    let node = document.getElementById('main');
+    let node = document.getElementById('desktop');
 
     domtoimage.toBlob(node, {
         width: node.clientWidth * scale,
@@ -97,6 +107,14 @@ function loadFromString(str) {
     }
 }
 
+function clickColor(clr, id) {
+    document.getElementById(id).style.backgroundColor = clr.value;
+}
+function clickColorFront(clr, id) {
+    document.getElementById(id).style.color = clr.value;
+}
+
+
 // events
 window.addEventListener("keydown", function(e) {
     if (!event.ctrlKey && !event.metaKey) {
@@ -110,7 +128,33 @@ window.addEventListener('paste', (event) => {
     let paste = (event.clipboardData || window.clipboardData).getData('text');
     loadFromString(paste);
 });
+
+
+function createColorControl(front, divname, name) {
+    let colorset = colorsets[0];
+
+    let colorControl = document.createElement("input");
+    colorControl.setAttribute("type","color");
+    colorControl.classList.add("colorpicker");
+
+    if (front) {
+        colorControl.addEventListener('change', function() { clickColorFront(this, divname)}, false);
+        colorControl.setAttribute("value", colorset[name]);
+        document.getElementById(divname).style.color = colorset[name];
+    } else {
+        colorControl.addEventListener('change', function() { clickColor(this, divname)}, false);
+        colorControl.setAttribute("value", colorset[name]);
+        document.getElementById(divname).style.backgroundColor = colorset[name];
+    }
+    document.getElementById("colorControls").appendChild(colorControl);
+}
 window.addEventListener('load', (event) => {
     reset();        
     loadFromString("Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.");
+
+    createColorControl(false, "desktop", "desktop");
+    createColorControl(false, "window_outline", "window");
+    createColorControl(true, "main", "text");
+    createColorControl(true, "window_outline", "boxes");
+//    document.getElementById("colorpick0").value = document.getElementById("desktop").style.backgroundColor;
 });

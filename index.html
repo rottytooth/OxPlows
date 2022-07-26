@@ -22,14 +22,21 @@
     <meta property="og:image:height" content="627" />    
 </head>
 <body>
-    <div id="inside">
     <h2>As the<br/>&nbsp;&nbsp;<span style="transform:scaleX(-1);display:inline-block">Ox Plows</span></h2>
     <div id="container">
-        <select id="size" onchange="reset()">
-            <option value="40" selected>Narrow</option>
-            <option value="80">Wide</option>
-        </select>
-        <div id="main" class="ox box-shadow"><p></p></div>
+        <div id="topControls">
+            <span id="colorControls"></span>
+            <select id="size" onchange="reset()">
+                <option value="40" selected>Narrow</option>
+                <option value="80">Wide</option>
+            </select>
+        </div>
+        <div id="desktop">
+            <div id="window_outline" class="ox_header box-shadow">
+                <p>▊▊ ▊</p>
+                <div id="main" class="ox"><p></p></div>
+            </div>
+        </div>
         <input type="button" onclick="reset()" value="Clear"/>
         <!-- <input type="button" onclick="copyAsHtml()" value="Copy as HTML"/> -->
         <input type="button" id="download" onclick="save2img(2)" value="Download As PNG"/>
@@ -45,7 +52,6 @@
             <p class="rev">On <a href="https://github.com/rottytooth/OxPlows">GitHub</a></p>
         </div style="width: 100%">
         <div style="clear: both"></div>
-    </div>
     </div>
     <div id="hidden"><input type="text" id="typedinput"></div>
 </body>
