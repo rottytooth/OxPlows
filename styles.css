@@ -24,6 +24,12 @@ a, a:visited {
 }
 #window_outline {
     text-align: right;
+    margin-bottom: 10px;
+}
+#window_header {
+    margin-top: -5px;
+    margin-right: -15px;
+    font-size: 12px;
 }
 #desktop {
     height: 100%;
@@ -34,7 +40,7 @@ a, a:visited {
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
-    border-color: #283237;
+    /* border-color: #283237; */
 }
 .header {
     margin: 0;
@@ -56,14 +62,21 @@ input, select {
     color: #ccc;
     height: 40px;
     vertical-align: bottom;
+    cursor: pointer;
 }
 select {
+    padding-left: 10px;
+    padding-right: 10px;
     display:inline-block;
 }
 input[type="color"] {
     width: 40px;
-    padding: 0px;
-    border-radius: 1px;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0px;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -87,8 +100,6 @@ input[type="button"] {
     width: 440px;
     margin: auto;
 
-    border-radius: 8px;
-    border: 2px solid #283237;
     border-radius: 8px;
 }
 .ox {
@@ -153,4 +164,7 @@ p {
     text-align: left;
     width: 470px;
     padding: 10px;
+}
+.colorset0::before {
+    content: 'o'
 }

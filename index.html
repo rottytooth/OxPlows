@@ -25,6 +25,8 @@
     <h2>As the<br/>&nbsp;&nbsp;<span style="transform:scaleX(-1);display:inline-block">Ox Plows</span></h2>
     <div id="container">
         <div id="topControls">
+            <select id="colorCombos">
+            </select>
             <span id="colorControls"></span>
             <select id="size" onchange="reset()">
                 <option value="40" selected>Narrow</option>
@@ -33,8 +35,9 @@
         </div>
         <div id="desktop" onclick="document.getElementById('typedinput').focus();">
             <div id="window_outline" class="ox_header box-shadow">
-                <p>▊▊ ▊</p>
+                <div id="window_header"><p>▊▊ ▊</p></div>
                 <div id="main" class="ox"><p></p></div>
+                <div id="hidden"><input type="text" id="typedinput"></div>
             </div>
         </div>
         <input type="button" onclick="reset()" value="Clear"/>
@@ -53,6 +56,5 @@
         </div style="width: 100%">
         <div style="clear: both"></div>
     </div>
-    <div id="hidden"><input type="text" id="typedinput"></div>
 </body>
 </html>

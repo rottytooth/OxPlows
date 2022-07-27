@@ -6,9 +6,27 @@ colorsets = [
         desktop: "#ffffff",
         window: "#283237",
         text: "#ffffff",
-        boxes: "#ffffff"
+        boxes: "#ffffff",
+        name: "wh grn wh wh"
+    },
+    {
+        desktop: "#006609",
+        window: "#283237",
+        text: "#00ff00",
+        boxes: "#5AC33A",
+        name: "grn gry grn grn"
+    },
+    {
+        desktop: "#7C7C7A",
+        window: "#fcfcfc",
+        text: "#555555",
+        boxes: "#CDCDCD",
+        name: "all greys"
     }
 ]
+
+// whether the text is still in its initial state
+var initialText;
 
 function isEmptyOrSpaces(str){
     return str === null || str.match(/^ *$/) !== null;
@@ -21,6 +39,7 @@ function reset() {
     document.getElementById('main').style.width = newsize + "px";
     document.getElementById("typedinput").value = "";
     document.getElementById("main").innerHTML = "<p></p>";
+    initialText = false;
 }
 
 function addNewLine(using_enter) {
@@ -51,10 +70,20 @@ function addNewLine(using_enter) {
         typedinput.value = "";
 }
 
-function addCharacter(e) {
-    if (e.ctrlKey || e.metaKey) {
+function addCharacterEvent(e) {
+    if (e.ctrlKey || e.metaKey || e.key == "Meta") {
         return true;
     }
+
+    let retval = addCharacter(e)
+
+    // if it's a letter, number, or punctuation, count it as a content change
+    if (initialText && e.key.length == 1) 
+        initialText = false;
+    return retval;
+}
+
+function addCharacter(e) {
 
     let typedinput = document.getElementById("typedinput");
     let main = document.getElementById("main");
@@ -107,6 +136,30 @@ function loadFromString(str) {
     }
 }
 
+
+// events
+window.addEventListener("keydown", function(e) {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    }
+    if (!e.ctrlKey && !e.metaKey) {
+        document.getElementById("typedinput").focus();
+    }
+    if (e.repeat) {
+        // key is being held down
+        addCharacterEvent(e);
+    }
+}, false);
+window.addEventListener("keyup", addCharacterEvent);
+window.addEventListener('paste', (e) => {
+    e.preventDefault();
+
+    let paste = (e.clipboardData || window.clipboardData).getData('text');
+    loadFromString(paste);
+});
+
 function clickColor(clr, id) {
     document.getElementById(id).style.backgroundColor = clr.value;
 }
@@ -114,28 +167,20 @@ function clickColorFront(clr, id) {
     document.getElementById(id).style.color = clr.value;
 }
 
-
-// events
-window.addEventListener("keydown", function(e) {
-    if (!e.ctrlKey && !e.metaKey) {
-        document.getElementById("typedinput").focus();
+function windowClick() {
+    if (initialText) {
+        reset();
     }
-}, false);
-window.addEventListener("keyup", addCharacter);
-window.addEventListener('paste', (event) => {
-    event.preventDefault();
+}
 
-    let paste = (event.clipboardData || window.clipboardData).getData('text');
-    loadFromString(paste);
-});
-
-
+// tools to select colors
 function createColorControl(front, divname, name) {
     let colorset = colorsets[0];
 
     let colorControl = document.createElement("input");
     colorControl.setAttribute("type","color");
     colorControl.classList.add("colorpicker");
+    colorControl.id = "colorch_" + name;
 
     if (front) {
         colorControl.addEventListener('change', function() { clickColorFront(this, divname)}, false);
@@ -148,6 +193,32 @@ function createColorControl(front, divname, name) {
     }
     document.getElementById("colorControls").appendChild(colorControl);
 }
+
+// dropdown to populate color selections
+function createColorOptions() {
+    let colorCombos = document.getElementById("colorCombos");
+    for (let i = 0; i < colorsets.length; i++) {
+        let opt = document.createElement('option');
+        opt.value = i;
+        opt.innerText = colorsets[i].name;
+        colorCombos.appendChild(opt);
+    }
+    
+    colorCombos.addEventListener("change", function() {
+        let colorCombos = document.getElementById("colorCombos");
+        colorset = colorsets[colorCombos.value];
+        for (const property in colorset) {
+            colorControl = document.getElementById("colorch_" + property);
+            colorControl.value = colorset[property];   
+            
+            var evt = document.createEvent("HTMLEvents");
+            evt.initEvent("change", false, true);
+            colorControl.dispatchEvent(evt);
+
+          }
+    });
+}
+
 window.addEventListener('load', (event) => {
     reset();        
     loadFromString("Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.");
@@ -157,5 +228,17 @@ window.addEventListener('load', (event) => {
     createColorControl(true, "main", "text");
     createColorControl(true, "window_outline", "boxes");
 
+    document.getElementById("desktop").addEventListener("click", windowClick);
     document.getElementById("typedinput").focus();
+
+    document.getElementById("typedinput").addEventListener("keydown", function(e) {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+            e.stopPropagation();
+            e.preventDefault();
+            return false;
+        }
+    });
+    createColorOptions();
+
+    setTimeout(function() { initialText = true; }, 100); // after key events from reload
 });
