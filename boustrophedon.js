@@ -13,7 +13,7 @@ colorsets = [
         desktop: "#006609",
         window: "#283237",
         text: "#00ff00",
-        boxes: "#5AC33A",
+        boxes: "#006609",
         name: "grn gry grn grn"
     },
     {
@@ -22,6 +22,13 @@ colorsets = [
         text: "#555555",
         boxes: "#CDCDCD",
         name: "all greys"
+    },
+    {
+        desktop: "#B1A9DD",
+        window: "#212121",
+        text: "#FEFC78",
+        boxes: "#212121",
+        name: "pur gry ylw gry"
     }
 ]
 
